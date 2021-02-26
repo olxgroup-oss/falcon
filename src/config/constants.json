@@ -1,0 +1,32 @@
+{
+  "application_port": "8000",
+  "pagerduty": {
+      "endpoint": "https://api.pagerduty.com/users/"
+  },
+  "jira": {
+      "endpoint": "<jira_endpoint>",
+      "issue_type_id": "<issue_type_id eg. Story/Epic/Bug etc>",
+      "project_id": "<project_id>"
+  },
+  "statuspage": {
+      "page_id": "<status_page_id>",
+      "deliver_notifications" : false
+  },
+  "slack": {
+      "notification_channel_ids": "<slack_channel_ids (separated by commas)>"
+  },
+  "validation_messages": {
+      "use_help": "Please use /falcon \"help\" to learn about the correct format to use for falcon commands",
+      "incorrect_command_format": "Incorrect command format.",
+      "command_parse_error": "Error parsing the slash command",
+      "invalid_no_of_arguments": "Invalid no of arguments",
+      "invalid_status": "Invalid status",
+      "comment_command_format": "The correct format is /falcon \"comment\" \"<status>\" \"<comment>\"",
+      "comment_statuspage_command_format": "The correct format is /falcon \"comment-statuspage\" \"<status>\" \"<comment>\"",
+      "comment_jira_command_format": "The correct format is /falcon \"comment-jira\" \"<status>\" \"<comment>\"",
+      "issue_command_format": "The correct format is /falcon \"issue\" \"<title>\" \"<severity>\" \"components = [compA, compB, ...]\"",
+      "allowed_jira_status": "You can only set status as \"resolved\" to close the jira issue for the incident",
+      "allowed_statuspage_status": "Status can only be one of - \"current\", \"investigating\", \"identified\", \"monitoring\", \"resolved\"",
+      "try_again": "Please try again"
+  }
+}
