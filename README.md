@@ -42,6 +42,20 @@ Below are the suppored slack commands:
     <img src="resources/Falcon_In_Action.gif">
 </div>
 
+## How to configure Falcon ?
+
+For making configurationn changes go to `src/config/constants.json`
+
+| Config Parameter                 | Default Value | Description |
+|----------------------------------|---------------|-------------|
+| application_port                 | 8000          | The port on which the application will run |
+| statuspage.page_id               | none          | The statuspage page_id under which the incident will be created |
+| statuspage.deliver_notifications | false         | Whether to deliver notifications to relevant stakeholders or not through statuspage for the incident |
+| jira.base_endpoint               | none          | The JIRA endpoint used by your organization |
+| jira.issue_type_id               | none          | JIRA custom_field_id for the type of issue that will be created by falcon |
+| jira.project_id                  | none          | JIRA project_id under which the issue will be created for the incident |
+| slack.notification_channel_ids   | none          | Comma seperated slack channel ids on which a notification needs to be sent for the incident |
+
 ## How to Build Falcon
 
 ### Prerequisites
@@ -76,20 +90,6 @@ To build Falcon from the source code yourself you need to have a working Go envi
     - docker run --name falcon -d -p 8000:8000 falcon:latest
 
 Falcon will now be reachable at http://localhost:8000/.
-
-## How to configure Falcon ?
-
-For making configurationn changes go to `src/config/constants.json`
-
-| Config Parameter                 | Default Value | Description |
-|----------------------------------|---------------|-------------|
-| application_port                 | 8000          | The port on which the application will run |
-| statuspage.page_id               | none          | The statuspage page_id under which the incident will be created |
-| statuspage.deliver_notifications | false         | Whether to deliver notifications to relevant stakeholders or not through statuspage for the incident |
-| jira.base_endpoint               | none          | The JIRA endpoint used by your organization |
-| jira.issue_type_id               | none          | JIRA custom_field_id for the type of issue that will be created by falcon |
-| jira.project_id                  | none          | JIRA project_id under which the issue will be created for the incident |
-| slack.notification_channel_ids   | none          | Comma seperated slack channel ids on which a notification needs to be sent for the incident |
 
 ## How to test ?
 
