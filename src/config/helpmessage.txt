@@ -1,10 +1,10 @@
-Falcon is an Incident Management tool, that handles all the intricacies of Incident Management and can be triggered from slack.
-Following is the command options:
+Falcon is an Incident Management tool, that handles all the intricacies of Incident Management and can be triggered from Slack.
+Following are the command options:
 
-• /falcon “issue” “<issue-title>” “<severity>” “[service_compA,service_compB, ..] - Creates a JIRA issue, a StatusPage incident and a Slack channel for the incident. The severity and components fields parameters are optional. Only the following values are valid for “severity” field - “minor”, “major”, “critical”. To know about the valid list of components on the statuspage, follow the link mentioned below.
-• /falcon “statuspage-incident” “<issue-title>” “<severity>” “[compA,compB, ..] - Creates a StatusPage incident entry for the incident and sync it with the slack channel from which it is used. The severity and components fields parameters are optional. Only the following values are valid for “severity” field - “minor”, “major”, “critical”. To know about the valid list of components on the statuspage, follow the link mentioned below.
+• /falcon “issue” “<issue-title>” “<severity>” “[service_compA,service_compB, ..] - Creates a JIRA issue, a StatusPage incident and a Slack channel for the incident. The severity and components fields parameters are optional. Only the following values are valid for the “severity” field - “minor”, “major”, “critical”. To know about the valid list of components on the statuspage, follow the link mentioned below.
+• /falcon “statuspage-incident” “<issue-title>” “<severity>” “[compA,compB, ..] - Creates a StatusPage incident entry for the incident and syncs it with the Slack channel from which it is used. The severity and components fields parameters are optional. Only the following values are valid for the “severity” field - “minor”, “major”, “critical”. To know about the valid list of components on the statuspage, follow the link mentioned below.
 • /falcon “comment” “<status>” “<comment>” - Adds the same comment to JIRA and StatusPage. Status of Statuspage can also be modified. (Jira issue is also closed if the status is “resolved” in the command.)
-• /falcon “comment-jira” “<status>” “<comment>” - Adds the comment to JIRA issue. The status field is optional in the command and can only have the value “resolved” to close the Jira issue.
+• /falcon “comment-jira” “<status>” “<comment>” - Adds the comment to the JIRA issue. The status field is optional in the command and can only have the value “resolved” to close the Jira issue.
 • /falcon “comment-statuspage” “<status>” “<comment>” - Modify the status of StatusPage and add the comment to the same StatusPage.
 •  /falcon “help” - To display this help menu.
 
