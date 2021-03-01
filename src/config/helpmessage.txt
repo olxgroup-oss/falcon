@@ -11,5 +11,3 @@ Following is the command options:
 Note: Use double quotes ( “” ) while using the Falcon, otherwise it will return a formatting error.
 Note: Falcon commands can only be used for commenting from the Incident Slack Channel triggered by Falcon
 Note: Only the following values are valid for the “status” field - “current”, “identified”, “investigating”, “monitoring” and “resolved”. Current keeps the current status of the StatusPage incident, while other values update the status of StatusPage.
-
-Note: A complete list of component mappings from falcon and statuspage is given at the link - https://docs.google.com/document/d/1Q02qCntkCPLL0XBlpwxTJUTGgy00ekxhltyiDzy5dTk/edit?usp=sharing
