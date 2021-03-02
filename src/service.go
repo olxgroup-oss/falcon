@@ -129,7 +129,6 @@ func issueCommandService(s slack.SlashCommand, arguments []string) {
 		return
 	}
 
-	issueKey = issueKey + "-copy"
 	channelID, err := createSlackChannel(issueKey, s)
 	if err != nil {
 		mutex.Unlock()
