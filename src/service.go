@@ -3,8 +3,8 @@ package main
 import (
 	"net/http"
 
-	"github.com/nlopes/slack"
 	log "github.com/sirupsen/logrus"
+	"github.com/slack-go/slack"
 )
 
 // ******************************************************************************
@@ -63,12 +63,10 @@ func slashCommandService(w http.ResponseWriter, s slack.SlashCommand, arguments 
 		if err != nil {
 			return
 		}
-
 		err = updateStatePage(arguments[1:], statusPageLink, s)
 		if err != nil {
 			return
 		}
-
 		jiraStatus := setJiraStatusForGenericComment(arguments)
 		err = addJiraComment(jiraURL, s.UserName, arguments, jiraStatus, s)
 		if err != nil {
@@ -131,6 +129,7 @@ func issueCommandService(s slack.SlashCommand, arguments []string) {
 		return
 	}
 
+	issueKey = issueKey + "-copy"
 	channelID, err := createSlackChannel(issueKey, s)
 	if err != nil {
 		mutex.Unlock()

@@ -8,8 +8,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/nlopes/slack"
 	log "github.com/sirupsen/logrus"
+	"github.com/slack-go/slack"
 )
 
 type SlashResponse struct {

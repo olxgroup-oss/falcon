@@ -8,8 +8,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/nlopes/slack"
 	log "github.com/sirupsen/logrus"
+	"github.com/slack-go/slack"
 )
 
 var mutex sync.Mutex
@@ -228,19 +228,16 @@ func processSlackPurpose(w http.ResponseWriter, s slack.SlashCommand) (statusPag
 		return statusPageLInk, jiraLink, err
 	}
 	description := strings.Split(purpose, "\n\n")
-	if isSlackDescriptionValid(description) {
+	if isSlackDescriptionInvalid(description) {
 		msg := "ERROR!! Error parsing the purpose of the channel. \n" + "Please make sure the about info of the channel is unchanged and you are using the command from incident channel."
 		response := SlashResponse{"ephemeral", msg}
 		slackCommandResponse(response, s)
 		err = errors.New("InternalError")
 		return statusPageLInk, jiraLink, err
 	}
-	statusPageID := description[0]
-	statusPageSplit := strings.Split(statusPageID, " ")
-	statusPageLink = "https://api.statuspage.io/v1/pages/" + constants.StatusPage.PageID + "/incidents/" + statusPageSplit[len(statusPageSplit)-1]
-	jiraLink = description[len(description)-1]
-	jiraLinkSplit := strings.Split(jiraLink, " ")
-	jiraURL = jiraLinkSplit[len(jiraLinkSplit)-1]
+	statusPageID := strings.TrimSpace(strings.Split(description[0], ":=")[1])
+	statusPageLink = "https://api.statuspage.io/v1/pages/" + constants.StatusPage.PageID + "/incidents/" + statusPageID
+	jiraURL = strings.TrimSpace(strings.Split(description[len(description)-1], "Jira Link :")[1])
 	return statusPageLink, jiraURL, err
 }
 

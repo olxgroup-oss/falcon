@@ -1,19 +1,19 @@
 package main
 
 import (
-	"github.com/nlopes/slack"
+	"github.com/slack-go/slack"
 )
 
 // ******************************************************************************
-// Name			  : isSlackDescriptionValid
+// Name			  : isSlackDescriptionInvalid
 // Description: Function to validate Slack Channel description before performing
 // 							updates
 // ******************************************************************************
-func isSlackDescriptionValid(description []string) bool {
-	if len(description) < 3 {
-		return false
+func isSlackDescriptionInvalid(description []string) bool {
+	if len(description) != 3 {
+		return true
 	}
-	return true
+	return false
 }
 
 // ******************************************************************************

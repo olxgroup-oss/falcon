@@ -4,8 +4,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/nlopes/slack"
 	log "github.com/sirupsen/logrus"
+	"github.com/slack-go/slack"
 )
 
 // ******************************************************************************
@@ -47,13 +47,14 @@ func createNewChannel(channelName string, users []User) (*slack.Channel, error) 
 // Name				: setChannelPurpose
 // Description: Function to set slack channel purpose
 // ******************************************************************************
-func setChannelPurpose(channelID string, purpose string) (string, error) {
+func setChannelPurpose(channelID string, purpose string) (*slack.Channel, error) {
 	slackAPI := slack.New(os.Getenv("SLACK_ACCESS_TOKEN"))
-	purpose, err := slackAPI.SetChannelPurpose(channelID, purpose)
+	// response, err := slackAPI.SetChannelPurpose(channelID, purpose)
+	response, err := slackAPI.SetPurposeOfConversation(channelID, purpose)
 	if err != nil {
 		log.Error("setChannelPurpose Error: ", err)
 	}
-	return purpose, err
+	return response, err
 }
 
 // ******************************************************************************
@@ -62,11 +63,13 @@ func setChannelPurpose(channelID string, purpose string) (string, error) {
 // ******************************************************************************
 func getChannelPurpose(channelID string) (string, error) {
 	slackAPI := slack.New(os.Getenv("SLACK_ACCESS_TOKEN"))
-	channel, err := slackAPI.GetChannelInfo(channelID)
+	// channel, err := slackAPI.GetChannelInfo(channelID)
+	channel, err := slackAPI.GetConversationInfo(channelID, false)
 	if err != nil {
 		log.Error("getChannelPurpose Error: ", err)
 	}
-	return channel.Purpose.Value, err
+	// log.Info(channel.GroupConversation.Purpose.Value)
+	return channel.GroupConversation.Purpose.Value, err
 }
 
 // ******************************************************************************
