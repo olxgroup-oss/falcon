@@ -62,7 +62,7 @@ func createStatusPage(s slack.SlashCommand, issueTitle string, severity string, 
 // Description: Helper function to update StatusPage Incident
 // ******************************************************************************
 func updateStatePage(arguments []string, statusPageLink string, s slack.SlashCommand) error {
-	_, err := updateStatusPageIncident(arguments[1:], statusPageLink)
+	_, err := updateStatusPageIncident(arguments, statusPageLink)
 	if err != nil {
 		msg := "ERROR!! Error updating StatusPage Incident: " + err.Error() + "\n" + constants.ValidationMessages.TryAgain + ". " + constants.ValidationMessages.UseHelp
 		response := SlashResponse{"ephemeral", msg}
